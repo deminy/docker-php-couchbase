@@ -44,7 +44,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v5
         with:
-          context: ./dockerfiles/${{ github.ref_name }}/
+          context: ./dockerfiles/4.1.x/
           build-args: |
             SWOOLE_IMAGE_TAG=5.1-php${{ matrix.php.version }}
             COUCHBASE_VERSION=${{ github.ref_name }}
