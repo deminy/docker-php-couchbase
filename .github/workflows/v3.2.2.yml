@@ -45,8 +45,8 @@ jobs:
             LIBCOUCHBASE_VERSION=3.3.10
           platforms: linux/amd64
           push: true
-          tags: deminy/php-couchbase:${{ github.ref_name }}
+          tags: deminy/php-couchbase:${{ github.ref_name }}-php${{ matrix.php }}
 
       -
-        name: Image Digest of deminy/php-couchbase:${{ github.ref_name }}
+        name: Image Digest of deminy/php-couchbase:${{ github.ref_name }}-php${{ matrix.php }}
         run: echo ${{ steps.docker_build.outputs.digest }}
