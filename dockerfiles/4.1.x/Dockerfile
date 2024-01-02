@@ -14,7 +14,7 @@ RUN \
     cd couchbase-${COUCHBASE_VERSION} && \
     phpize && \
     ./configure && \
-    make -j$(nproc) && \
+    make -j1 && \
     make install && \
     cd .. && \
     rm -rf couchbase-${COUCHBASE_VERSION} couchbase.tgz && \
