@@ -1,4 +1,4 @@
-**Docker images of various versions of the Couchbase extension for PHP.**
+**Docker images of the Couchbase extension for PHP.**
 
 ## Docker Images
 
