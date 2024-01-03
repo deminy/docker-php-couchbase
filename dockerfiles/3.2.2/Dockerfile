@@ -29,4 +29,4 @@ RUN \
     pecl install couchbase-3.2.2    && \
     docker-php-ext-enable couchbase && \
     echo "swoole.use_shortname=Off" >> $(php-config --ini-dir)/docker-php-ext-swoole.ini && \
-    rm -rf /var/lib/apt/lists/* /usr/share/man /tmp/* /usr/src/php.tar.xz*
+    rm -rf /var/lib/apt/lists/* /tmp/*
