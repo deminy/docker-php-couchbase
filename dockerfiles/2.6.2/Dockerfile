@@ -20,5 +20,4 @@ RUN \
     pecl update-channels            && \
     pecl install couchbase-2.6.2    && \
     docker-php-ext-enable couchbase && \
-    echo "swoole.use_shortname=Off" >> $(php-config --ini-dir)/docker-php-ext-swoole.ini && \
     rm -rf /var/lib/apt/lists/* /tmp/*

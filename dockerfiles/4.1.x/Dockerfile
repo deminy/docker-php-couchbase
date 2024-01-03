@@ -31,5 +31,4 @@ COPY --from=0 /usr/local/lib/php/extensions/${PHP_EXTENSION_DIR}/libcouchbase_ph
 RUN \
     set -ex && \
     docker-php-ext-enable couchbase && \
-    echo "swoole.use_shortname=Off" >> $(php-config --ini-dir)/docker-php-ext-swoole.ini && \
     rm -rf /var/lib/apt/lists/* /tmp/*
