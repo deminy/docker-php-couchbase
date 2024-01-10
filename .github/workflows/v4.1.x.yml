@@ -18,6 +18,11 @@ jobs:
           - {version: "8.1", "ext_dir": "no-debug-non-zts-20210902"}
           - {version: "8.2", "ext_dir": "no-debug-non-zts-20220829"}
           - {version: "8.3", "ext_dir": "no-debug-non-zts-20230831"}
+        incompatibleWithPHP83:
+          - ${{ contains(fromJson('["4.1.0", "4.1.1", "4.1.2", "4.1.3", "4.1.4", "4.1.5"]'), github.ref_name) }}
+        exclude:
+          - php: {version: "8.3", "ext_dir": "no-debug-non-zts-20230831"}
+            incompatibleWithPHP83: true
 
     steps:
       -
