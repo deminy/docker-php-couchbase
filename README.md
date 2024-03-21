@@ -17,6 +17,11 @@ docker pull deminy/php-couchbase:3.2.2-php8.1
 docker pull deminy/php-couchbase:4.1.6-php8.0
 # ...
 docker pull deminy/php-couchbase:4.1.6-php8.3
+
+# Pull Couchbase 4.2.x images.
+docker pull deminy/php-couchbase:4.2.0-php8.0
+# ...
+docker pull deminy/php-couchbase:4.2.0-php8.3
 ```
 
 The images use [phpswoole/swoole] as base images. Please refer to the [phpswoole/swoole] repository for more information
@@ -35,6 +40,11 @@ docker run --rm -ti deminy/php-couchbase:3.2.2-php8.1 php --ri couchbase
 docker run --rm -ti deminy/php-couchbase:4.1.6-php8.0 php --ri couchbase
 # ...
 docker run --rm -ti deminy/php-couchbase:4.1.6-php8.3 php --ri couchbase
+
+# Check Couchbase 4.2.x installations.
+docker run --rm -ti deminy/php-couchbase:4.2.0-php8.0 php --ri couchbase
+# ...
+docker run --rm -ti deminy/php-couchbase:4.2.0-php8.3 php --ri couchbase
 ```
 
 ## Build Docker Images Locally
@@ -81,6 +91,24 @@ docker build \
   --build-arg PHP_EXTENSION_DIR=${PHP_EXTENSION_DIR} \
   -t deminy/php-couchbase:${COUCHBASE_VERSION}-php${PHP_VERSION} \
   ./dockerfiles/4.1.x/.
+```
+
+### Couchbase 4.2.x
+
+The Couchbase 4.2.x series works with PHP 8.0 to 8.3.
+
+```bash
+export PHP_VERSION=8.2
+export COUCHBASE_VERSION=4.2.0
+export PHP_EXTENSION_DIR=no-debug-non-zts-20220829
+
+docker build \
+  --platform=linux/amd64 \
+  --build-arg SWOOLE_IMAGE_TAG=5.1-php${PHP_VERSION} \
+  --build-arg COUCHBASE_VERSION=${COUCHBASE_VERSION} \
+  --build-arg PHP_EXTENSION_DIR=${PHP_EXTENSION_DIR} \
+  -t deminy/php-couchbase:${COUCHBASE_VERSION}-php${PHP_VERSION} \
+  ./dockerfiles/4.2.x/.
 ```
 
 ## References
