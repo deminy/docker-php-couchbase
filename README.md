@@ -13,7 +13,7 @@ docker pull deminy/php-couchbase:3.2.2-php7.4
 docker pull deminy/php-couchbase:3.2.2-php8.0
 docker pull deminy/php-couchbase:3.2.2-php8.1
 
-# Pull Couchbase 4 images.
+# Pull Couchbase 4.1.x images.
 docker pull deminy/php-couchbase:4.1.6-php8.0
 # ...
 docker pull deminy/php-couchbase:4.1.6-php8.3
@@ -31,7 +31,7 @@ docker run --rm -ti deminy/php-couchbase:3.2.2-php7.4 php --ri couchbase
 docker run --rm -ti deminy/php-couchbase:3.2.2-php8.0 php --ri couchbase
 docker run --rm -ti deminy/php-couchbase:3.2.2-php8.1 php --ri couchbase
 
-# Check Couchbase 4 installations.
+# Check Couchbase 4.1.x installations.
 docker run --rm -ti deminy/php-couchbase:4.1.6-php8.0 php --ri couchbase
 # ...
 docker run --rm -ti deminy/php-couchbase:4.1.6-php8.3 php --ri couchbase
@@ -67,7 +67,7 @@ docker build \
 
 ### Couchbase 4.1.x
 
-The Coucbhase 4.1.x series works with PHP 8.0 to 8.3.
+The Couchbase 4.1.x series works with PHP 8.0 to 8.3.
 
 ```bash
 export PHP_VERSION=8.2
