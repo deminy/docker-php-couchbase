@@ -6,7 +6,6 @@ FROM phpswoole/swoole:${SWOOLE_IMAGE_TAG}
 # lower installed. Thus, here we build CMake from source to satisfy the requirement.
 ARG CMAKE_VERSION=3.29.0
 ARG COUCHBASE_VERSION
-ENV COUCHBASE_VERSION=${COUCHBASE_VERSION}
 
 RUN \
     set -ex && \
@@ -30,7 +29,6 @@ RUN \
 FROM phpswoole/swoole:${SWOOLE_IMAGE_TAG}
 
 ARG PHP_EXTENSION_DIR
-ENV PHP_EXTENSION_DIR=${PHP_EXTENSION_DIR}
 
 COPY --from=0 /usr/local/lib/php/extensions/${PHP_EXTENSION_DIR}/couchbase.so /usr/local/lib/php/extensions/${PHP_EXTENSION_DIR}
 
