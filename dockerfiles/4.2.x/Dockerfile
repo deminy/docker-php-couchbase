@@ -34,7 +34,4 @@ ENV PHP_EXTENSION_DIR=${PHP_EXTENSION_DIR}
 
 COPY --from=0 /usr/local/lib/php/extensions/${PHP_EXTENSION_DIR}/couchbase.so /usr/local/lib/php/extensions/${PHP_EXTENSION_DIR}
 
-RUN \
-    set -ex && \
-    docker-php-ext-enable couchbase && \
-    rm -rf /var/lib/apt/lists/* /tmp/*
+RUN docker-php-ext-enable couchbase

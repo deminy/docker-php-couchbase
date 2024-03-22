@@ -15,10 +15,7 @@ RUN \
     phpize && \
     ./configure && \
     make -j1 && \
-    make install && \
-    cd .. && \
-    rm -rf couchbase-${COUCHBASE_VERSION} couchbase.tgz && \
-    rm -rf /var/lib/apt/lists/* /tmp/*
+    make install
 
 FROM phpswoole/swoole:${SWOOLE_IMAGE_TAG}
 
@@ -28,7 +25,4 @@ ENV PHP_EXTENSION_DIR=${PHP_EXTENSION_DIR}
 COPY --from=0 /usr/local/lib/php/extensions/${PHP_EXTENSION_DIR}/couchbase.so                /usr/local/lib/php/extensions/${PHP_EXTENSION_DIR}
 COPY --from=0 /usr/local/lib/php/extensions/${PHP_EXTENSION_DIR}/libcouchbase_php_wrapper.so /usr/local/lib/php/extensions/${PHP_EXTENSION_DIR}
 
-RUN \
-    set -ex && \
-    docker-php-ext-enable couchbase && \
-    rm -rf /var/lib/apt/lists/* /tmp/*
+RUN docker-php-ext-enable couchbase
