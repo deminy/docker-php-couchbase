@@ -49,7 +49,7 @@ jobs:
             SWOOLE_IMAGE_TAG=5.1-php${{ matrix.php.version }}
             COUCHBASE_VERSION=${{ github.ref_name }}
             PHP_EXTENSION_DIR=${{ matrix.php.ext_dir }}
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64/v8
           push: true
           tags: deminy/php-couchbase:${{ github.ref_name }}-php${{ matrix.php.version }}
 
