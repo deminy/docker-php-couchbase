@@ -2,23 +2,30 @@ ARG SWOOLE_IMAGE_TAG
 
 FROM phpswoole/swoole:${SWOOLE_IMAGE_TAG}
 
+# Package couchbase-php-client v4.2.0+ requires CMake 3.19+; however, the official PHP 8.0 images have CMake 3.18.4 or
+# lower installed. Thus, here we build CMake from source to satisfy the requirement.
+ARG CMAKE_VERSION=3.29.0
 ARG COUCHBASE_VERSION
 ENV COUCHBASE_VERSION=${COUCHBASE_VERSION}
 
 RUN \
     set -ex && \
     apt-get update && \
-    apt-get install cmake git -y --no-install-recommends && \
+    apt-get install git -y --no-install-recommends && \
+    curl -sfL -o cmake.tar.gz https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}.tar.gz && \
+    tar zxf cmake.tar.gz && \
+    cd cmake-${CMAKE_VERSION} && \
+    ./configure && \
+    make -j$(nproc) && \
+    make install && \
+    cd .. && \
     curl -sfL -o couchbase.tgz https://github.com/couchbase/couchbase-php-client/releases/download/${COUCHBASE_VERSION}/couchbase-${COUCHBASE_VERSION}.tgz && \
-    tar zxvf couchbase.tgz && \
+    tar zxf couchbase.tgz && \
     cd couchbase-${COUCHBASE_VERSION} && \
     phpize && \
     ./configure && \
     make -j1 && \
-    make install && \
-    cd .. && \
-    rm -rf couchbase-${COUCHBASE_VERSION} couchbase.tgz && \
-    rm -rf /var/lib/apt/lists/* /tmp/*
+    make install
 
 FROM phpswoole/swoole:${SWOOLE_IMAGE_TAG}
 

@@ -10,7 +10,7 @@ RUN \
     apt-get update && \
     apt-get install cmake -y --no-install-recommends && \
     curl -sfL -o couchbase.tgz https://github.com/couchbase/couchbase-php-client/releases/download/${COUCHBASE_VERSION}/couchbase-${COUCHBASE_VERSION}.tgz && \
-    tar zxvf couchbase.tgz && \
+    tar zxf couchbase.tgz && \
     cd couchbase-${COUCHBASE_VERSION} && \
     phpize && \
     ./configure && \
