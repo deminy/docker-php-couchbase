@@ -57,7 +57,3 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: deminy/php-couchbase:${{ github.ref_name }}-php${{ matrix.php.version }}
-
-      -
-        name: Image Digest of deminy/php-couchbase:${{ github.ref_name }}-php${{ matrix.php.version }}
-        run: echo ${{ steps.docker_build.outputs.digest }}

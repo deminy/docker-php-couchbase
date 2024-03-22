@@ -1,4 +1,4 @@
-name: Build Couchbase 3 Images
+name: Build Couchbase 3.2.2 Images
 
 on:
   push:
@@ -46,7 +46,3 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: deminy/php-couchbase:${{ github.ref_name }}-php${{ matrix.php }}
-
-      -
-        name: Image Digest of deminy/php-couchbase:${{ github.ref_name }}-php${{ matrix.php }}
-        run: echo ${{ steps.docker_build.outputs.digest }}

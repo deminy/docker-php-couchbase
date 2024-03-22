@@ -1,4 +1,4 @@
-name: Build Couchbase 2 Images
+name: Build Couchbase 2.6.2 Images
 
 on:
   push:
@@ -39,7 +39,3 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: deminy/php-couchbase:${{ github.ref_name }}
-
-      -
-        name: Image Digest of deminy/php-couchbase:${{ github.ref_name }}
-        run: echo ${{ steps.docker_build.outputs.digest }}
