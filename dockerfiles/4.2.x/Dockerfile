@@ -1,6 +1,6 @@
 ARG SWOOLE_IMAGE_TAG
 
-FROM phpswoole/swoole:${SWOOLE_IMAGE_TAG}
+FROM phpswoole/swoole:${SWOOLE_IMAGE_TAG} AS ext-couchbase
 
 # Package couchbase-php-client v4.2.0+ requires CMake 3.19+; however, the official PHP 8.0 images have CMake 3.18.4 or
 # lower installed. Thus, here we build CMake from source to satisfy the requirement.
@@ -26,10 +26,15 @@ RUN \
     make -j1 && \
     make install
 
+FROM phpswoole/swoole:${SWOOLE_IMAGE_TAG} AS ext-igbinary
+
+RUN pecl channel-update pecl && pecl install igbinary-3.2.15
+
 FROM phpswoole/swoole:${SWOOLE_IMAGE_TAG}
 
 ARG PHP_EXTENSION_DIR
 
-COPY --from=0 /usr/local/lib/php/extensions/${PHP_EXTENSION_DIR}/couchbase.so /usr/local/lib/php/extensions/${PHP_EXTENSION_DIR}
+COPY --from=ext-couchbase /usr/local/lib/php/extensions/${PHP_EXTENSION_DIR}/couchbase.so /usr/local/lib/php/extensions/${PHP_EXTENSION_DIR}
+COPY --from=ext-igbinary  /usr/local/lib/php/extensions/${PHP_EXTENSION_DIR}/igbinary.so  /usr/local/lib/php/extensions/${PHP_EXTENSION_DIR}
 
 RUN docker-php-ext-enable couchbase
