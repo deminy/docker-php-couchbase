@@ -17,7 +17,8 @@ RUN \
         libcouchbase-dev=2.10.6-1  \
         libzip-dev                 \
         --no-install-recommends && \
-    pecl update-channels            && \
+    pecl channel-update pecl        && \
     pecl install couchbase-2.6.2    && \
+    pecl install igbinary-3.2.15    && \
     docker-php-ext-enable couchbase && \
     rm -rf /var/lib/apt/lists/* /tmp/*
