@@ -47,7 +47,7 @@ jobs:
       -
         name: Build and Publish Images of PHP ${{ matrix.php.version }}
         id: docker_build
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/4.1.x/
           build-args: |
