@@ -12,7 +12,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ["7.4", "8.0", "8.1"]
+        env:
+          - {php: "7.4", "swoole": "4.8"}
+          - {php: "8.0", "swoole": "5.1"}
+          - {php: "8.1", "swoole": "5.1"}
 
     steps:
       -
@@ -35,14 +38,14 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       -
-        name: Build and Publish Images of PHP ${{ matrix.php }}
+        name: Build and Publish Images of PHP ${{ matrix.env.php }} + Swoole ${{ matrix.env.swoole }}
         id: docker_build
         uses: docker/build-push-action@v6
         with:
           context: ./dockerfiles/${{ github.ref_name }}/
           build-args: |
-            SWOOLE_IMAGE_TAG=4.8-php${{ matrix.php }}
+            SWOOLE_IMAGE_TAG=${{ matrix.env.swoole }}-php${{ matrix.env.php }}
             LIBCOUCHBASE_VERSION=3.3.13
           platforms: linux/amd64
           push: true
-          tags: deminy/php-couchbase:${{ github.ref_name }}-php${{ matrix.php }}
+          tags: deminy/php-couchbase:${{ github.ref_name }}-php${{ matrix.env.php }}
