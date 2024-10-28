@@ -66,12 +66,12 @@ docker build \
 
 docker build \
   --platform=linux/amd64 \
-  --build-arg SWOOLE_IMAGE_TAG=4.8-php8.0 \
+  --build-arg SWOOLE_IMAGE_TAG=5.1-php8.0 \
   -t deminy/php-couchbase:3.2.2-php8.0 dockerfiles/3.2.2/.
 
 docker build \
   --platform=linux/amd64 \
-  --build-arg SWOOLE_IMAGE_TAG=4.8-php8.1 \
+  --build-arg SWOOLE_IMAGE_TAG=5.1-php8.1 \
   -t deminy/php-couchbase:3.2.2-php8.1 dockerfiles/3.2.2/.
 ```
 
