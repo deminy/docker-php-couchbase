@@ -61,7 +61,7 @@ docker build --platform=linux/amd64 -t deminy/php-couchbase:2.6.2-php7.4 dockerf
 docker build \
   --platform=linux/amd64 \
   --build-arg SWOOLE_IMAGE_TAG=4.8-php7.4 \
-  --build-arg LIBCOUCHBASE_VERSION=3.3.10 \
+  --build-arg LIBCOUCHBASE_VERSION=3.3.13 \
   -t deminy/php-couchbase:3.2.2-php7.4 dockerfiles/3.2.2/.
 
 docker build \
