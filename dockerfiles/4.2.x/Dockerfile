@@ -24,7 +24,8 @@ RUN \
     phpize && \
     ./configure && \
     make -j1 && \
-    make install
+    make install && \
+    composer global require --no-progress --prefer-dist  couchbase/couchbase:~${COUCHBASE_VERSION}
 
 FROM phpswoole/swoole:${SWOOLE_IMAGE_TAG} AS ext-igbinary
 
