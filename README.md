@@ -6,12 +6,12 @@ Docker images are available at Docker repository [deminy/php-couchbase]. Use the
 
 ```bash
 # Pull Couchbase 2 images.
-docker pull deminy/php-couchbase:2.6.2
+docker pull --platform=linux/amd64 deminy/php-couchbase:2.6.2
 
 # Pull Couchbase 3 images.
-docker pull deminy/php-couchbase:3.2.2-php7.4
-docker pull deminy/php-couchbase:3.2.2-php8.0
-docker pull deminy/php-couchbase:3.2.2-php8.1
+docker pull --platform=linux/amd64 deminy/php-couchbase:3.2.2-php7.4
+docker pull --platform=linux/amd64 deminy/php-couchbase:3.2.2-php8.0
+docker pull --platform=linux/amd64 deminy/php-couchbase:3.2.2-php8.1
 
 # Pull Couchbase 4.1.x images.
 docker pull deminy/php-couchbase:4.1.6-php8.0
@@ -19,9 +19,9 @@ docker pull deminy/php-couchbase:4.1.6-php8.0
 docker pull deminy/php-couchbase:4.1.6-php8.3
 
 # Pull Couchbase 4.2.x images.
-docker pull deminy/php-couchbase:4.2.4-php8.0
+docker pull deminy/php-couchbase:4.2.5-php8.0
 # ...
-docker pull deminy/php-couchbase:4.2.4-php8.3
+docker pull deminy/php-couchbase:4.2.5-php8.3
 ```
 
 The images use [phpswoole/swoole] as base images. Please refer to the [phpswoole/swoole] repository for more information
@@ -29,12 +29,12 @@ about how to use the images. For example, we can use commands like the following
 
 ```bash
 # Check Couchbase 2 installation.
-docker run --rm -ti deminy/php-couchbase:2.6.2 php --ri couchbase
+docker run --rm --platform=linux/amd64 -ti deminy/php-couchbase:2.6.2 php --ri couchbase
 
 # Check Couchbase 3 installations.
-docker run --rm -ti deminy/php-couchbase:3.2.2-php7.4 php --ri couchbase
-docker run --rm -ti deminy/php-couchbase:3.2.2-php8.0 php --ri couchbase
-docker run --rm -ti deminy/php-couchbase:3.2.2-php8.1 php --ri couchbase
+docker run --rm --platform=linux/amd64 -ti deminy/php-couchbase:3.2.2-php7.4 php --ri couchbase
+docker run --rm --platform=linux/amd64 -ti deminy/php-couchbase:3.2.2-php8.0 php --ri couchbase
+docker run --rm --platform=linux/amd64 -ti deminy/php-couchbase:3.2.2-php8.1 php --ri couchbase
 
 # Check Couchbase 4.1.x installations.
 docker run --rm -ti deminy/php-couchbase:4.1.6-php8.0 php --ri couchbase
@@ -42,9 +42,9 @@ docker run --rm -ti deminy/php-couchbase:4.1.6-php8.0 php --ri couchbase
 docker run --rm -ti deminy/php-couchbase:4.1.6-php8.3 php --ri couchbase
 
 # Check Couchbase 4.2.x installations. Note that we have both AMD64 and ARM64 images built for Couchbase 4.2.x.
-docker run --rm -ti deminy/php-couchbase:4.2.4-php8.0 php --ri couchbase
+docker run --rm -ti deminy/php-couchbase:4.2.5-php8.0 php --ri couchbase
 # ...
-docker run --rm -ti deminy/php-couchbase:4.2.4-php8.3 php --ri couchbase
+docker run --rm -ti deminy/php-couchbase:4.2.5-php8.3 php --ri couchbase
 ```
 
 ## Build Docker Images Locally
@@ -99,7 +99,7 @@ The Couchbase 4.2.x series works for both AMD64 and ARM64 architectures, and wor
 
 ```bash
 export PHP_VERSION=8.2
-export COUCHBASE_VERSION=4.2.4
+export COUCHBASE_VERSION=4.2.5
 export PHP_EXTENSION_DIR=no-debug-non-zts-20220829
 
 docker build \
