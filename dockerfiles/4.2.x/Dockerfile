@@ -23,7 +23,7 @@ RUN \
     cd couchbase-${COUCHBASE_VERSION} && \
     phpize && \
     ./configure && \
-    make -j1 && \
+    make -j$(nproc) && \
     make install && \
     composer global require --no-progress --prefer-dist  couchbase/couchbase:~${COUCHBASE_VERSION}
 
