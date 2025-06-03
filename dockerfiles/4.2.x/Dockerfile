@@ -42,4 +42,4 @@ RUN \
     set -ex && \
     docker-php-ext-enable couchbase && \
     composer global require --no-progress -nq --prefer-dist couchbase/couchbase:${COUCHBASE_VERSION} && \
-    composer clear-cache
+    composer global clear-cache
