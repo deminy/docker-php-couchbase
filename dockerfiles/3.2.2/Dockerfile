@@ -27,6 +27,6 @@ RUN \
     rm -rf libevent-core.deb libcouchbase-${LIBCOUCHBASE_VERSION}_debian$(lsb_release -rs)_$(lsb_release -cs)_$(dpkg --print-architecture) && \
     pecl channel-update pecl        && \
     pecl install couchbase-3.2.2    && \
-    pecl install igbinary-3.2.15    && \
+    pecl install igbinary-3.2.16    && \
     docker-php-ext-enable couchbase && \
     rm -rf /var/lib/apt/lists/* /tmp/*

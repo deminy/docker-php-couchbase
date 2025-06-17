@@ -28,7 +28,7 @@ RUN \
 
 FROM phpswoole/swoole:${SWOOLE_IMAGE_TAG} AS ext-igbinary
 
-RUN pecl channel-update pecl && pecl install igbinary-3.2.15
+RUN pecl channel-update pecl && pecl install igbinary-3.2.16
 
 FROM phpswoole/swoole:${SWOOLE_IMAGE_TAG}
 
