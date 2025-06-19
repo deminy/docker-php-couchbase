@@ -30,7 +30,7 @@ matrix=(
   ("8.4" "no-debug-non-zts-20240924")
 )
 
-docker buildx rm -f --builder docker-php-couchbase
+docker buildx rm -f --builder docker-php-couchbase || true
 docker buildx create --name docker-php-couchbase --driver-opt network=host --use
 docker buildx inspect --bootstrap
 
