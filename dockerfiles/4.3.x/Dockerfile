@@ -23,7 +23,7 @@ RUN \
     cd couchbase-${COUCHBASE_VERSION} && \
     phpize && \
     ./configure && \
-    make -j$(nproc) && \
+    make -j1 && \
     make install
 
 FROM phpswoole/swoole:${SWOOLE_IMAGE_TAG} AS ext-igbinary
