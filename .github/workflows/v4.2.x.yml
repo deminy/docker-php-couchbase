@@ -1,13 +1,10 @@
 name: Build Couchbase 4.2.x Images
 
 on:
-  # Building multi-arch images via GitHub Actions is not supported due to long build times. Please use scripts under
-  # the `bin/` directory to build and deploy images manually.
-  # push:
-  #   branches:
-  #     - '4.2.[0-9]+'
-  #     - '4.2.[0-9]+-?[a-zA-Z]**'
-  #
+  push:
+    branches:
+      - '4.2.[0-9]+'
+      - '4.2.[0-9]+-?[a-zA-Z]**'
   workflow_dispatch:
 
 jobs:
