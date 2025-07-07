@@ -45,7 +45,7 @@ jobs:
           context: ./dockerfiles/${{ github.ref_name }}/
           build-args: |
             SWOOLE_IMAGE_TAG=${{ matrix.env.swoole }}-php${{ matrix.env.php }}
-            LIBCOUCHBASE_VERSION=3.3.16
+            LIBCOUCHBASE_VERSION=3.3.17
           platforms: linux/amd64
           push: true
           tags: deminy/php-couchbase:${{ github.ref_name }}-php${{ matrix.env.php }}
