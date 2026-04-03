@@ -1,4 +1,4 @@
-ARG SWOOLE_IMAGE_TAG=6.0-php8.4
+ARG SWOOLE_IMAGE_TAG=6.1-php8.4
 
 FROM phpswoole/swoole:${SWOOLE_IMAGE_TAG} AS ext-couchbase
 

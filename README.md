@@ -116,7 +116,7 @@ docker build \
 
 ### Couchbase 4.4.x
 
-The Couchbase 4.4.x series works for both AMD64 and ARM64 architectures, and works with PHP 8.1 to 8.5.
+The Couchbase 4.4.x series works for both AMD64 and ARM64 architectures, and works with PHP 8.1 to 8.4.
 
 ```bash
 export PHP_VERSION=8.4
@@ -124,7 +124,7 @@ export COUCHBASE_VERSION=4.4.0
 export PHP_EXTENSION_DIR=no-debug-non-zts-20240924
 
 docker build \
-  --build-arg SWOOLE_IMAGE_TAG=6.0-php${PHP_VERSION} \
+  --build-arg SWOOLE_IMAGE_TAG=6.1-php${PHP_VERSION} \
   --build-arg COUCHBASE_VERSION=${COUCHBASE_VERSION} \
   --build-arg PHP_EXTENSION_DIR=${PHP_EXTENSION_DIR} \
   -t deminy/php-couchbase:${COUCHBASE_VERSION}-php${PHP_VERSION} \
